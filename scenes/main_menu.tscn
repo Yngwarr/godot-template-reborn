@@ -9,8 +9,9 @@
 font = ExtResource("2_ekxnf")
 font_size = 72
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("quit_button")]
 script = ExtResource("1_l6cm7")
+quit_button = NodePath("MenuLayer/BottomMargin/Menu/Quit")
 
 [node name="FocusGrabber" type="Node" parent="." node_paths=PackedStringArray("first_to_focus")]
 script = ExtResource("4_wu84c")

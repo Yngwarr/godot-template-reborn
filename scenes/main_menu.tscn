@@ -9,9 +9,11 @@
 font = ExtResource("2_ekxnf")
 font_size = 72
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("quit_button")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("quit_button", "start_button")]
 script = ExtResource("1_l6cm7")
+game_scene_name = "uid://ddyuspb8ifklr"
 quit_button = NodePath("MenuLayer/BottomMargin/Menu/Quit")
+start_button = NodePath("MenuLayer/BottomMargin/Menu/Start")
 
 [node name="FocusGrabber" type="Node" parent="." node_paths=PackedStringArray("first_to_focus")]
 script = ExtResource("4_wu84c")

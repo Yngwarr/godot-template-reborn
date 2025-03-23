@@ -2,7 +2,9 @@
 class_name FocusGrabber
 extends Node
 
-## Sets focus to a given control on ready.
+
+## Sets focus to the given node on ready.
+
 
 @export var first_to_focus: Control:
     set(value):

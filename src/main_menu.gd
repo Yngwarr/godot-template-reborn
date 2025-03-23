@@ -11,7 +11,7 @@ extends Node2D
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		if OS.has_feature('web'):
-			visible = false
+			quit_button.visible = false
 
 		quit_button.pressed.connect(quit_game)
 

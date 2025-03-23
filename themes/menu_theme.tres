@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d3lp3uag5xe6g"]
+
+[ext_resource type="FontFile" uid="uid://caxpo5bu7y28j" path="res://fonts/Excalifont-Regular.woff2" id="1_funo8"]
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_funo8")

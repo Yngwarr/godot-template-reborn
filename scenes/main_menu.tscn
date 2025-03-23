@@ -1,5 +1,63 @@
-[gd_scene format=3 uid="uid://kxbr4sotj34g"]
+[gd_scene load_steps=6 format=3 uid="uid://kxbr4sotj34g"]
+
+[ext_resource type="Script" uid="uid://pbhqcq3e7204" path="res://src/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://caxpo5bu7y28j" path="res://fonts/Excalifont-Regular.woff2" id="2_ekxnf"]
+[ext_resource type="Theme" uid="uid://d3lp3uag5xe6g" path="res://themes/menu_theme.tres" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://cjyjl78gf56n0" path="res://src/focus_grabber.gd" id="4_wu84c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
+font = ExtResource("2_ekxnf")
+font_size = 72
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_l6cm7")
+
+[node name="FocusGrabber" type="Node" parent="." node_paths=PackedStringArray("first_to_focus")]
+script = ExtResource("4_wu84c")
+first_to_focus = NodePath("../MenuLayer/BottomMargin/Menu/Start")
+metadata/_custom_type_script = "uid://cjyjl78gf56n0"
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="TopMargin" type="MarginContainer" parent="MenuLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 191.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="Title" type="Label" parent="MenuLayer/TopMargin"]
+layout_mode = 2
+text = "Game Template"
+label_settings = SubResource("LabelSettings_bqqt6")
+horizontal_alignment = 1
+
+[node name="BottomMargin" type="MarginContainer" parent="MenuLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -255.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 100
+
+[node name="Menu" type="VBoxContainer" parent="MenuLayer/BottomMargin"]
+layout_mode = 2
+theme = ExtResource("3_bqqt6")
+
+[node name="Start" type="Button" parent="MenuLayer/BottomMargin/Menu"]
+layout_mode = 2
+text = "Start"
+
+[node name="Credits" type="Button" parent="MenuLayer/BottomMargin/Menu"]
+layout_mode = 2
+text = "Credits
+"
+
+[node name="Quit" type="Button" parent="MenuLayer/BottomMargin/Menu"]
+layout_mode = 2
+text = "Quit"

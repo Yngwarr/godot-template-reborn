@@ -24,6 +24,10 @@ Global="*res://src/global.gd"
 window/size/mode=3
 window/stretch/mode="canvas_items"
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://locales/translation.en.translation")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

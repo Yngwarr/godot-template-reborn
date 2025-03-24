@@ -1,19 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://kxbr4sotj34g"]
+[gd_scene load_steps=7 format=3 uid="uid://kxbr4sotj34g"]
 
 [ext_resource type="Script" uid="uid://pbhqcq3e7204" path="res://src/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://caxpo5bu7y28j" path="res://fonts/Excalifont-Regular.woff2" id="2_ekxnf"]
 [ext_resource type="Theme" uid="uid://d3lp3uag5xe6g" path="res://themes/menu_theme.tres" id="3_bqqt6"]
 [ext_resource type="Script" uid="uid://cjyjl78gf56n0" path="res://src/focus_grabber.gd" id="4_wu84c"]
+[ext_resource type="Script" uid="uid://c60boq3cjplxy" path="res://src/credits_window.gd" id="5_8ln24"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
 font = ExtResource("2_ekxnf")
 font_size = 72
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("quit_button", "start_button")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("quit_button", "start_button", "credits_button", "credits_window")]
 script = ExtResource("1_l6cm7")
 game_scene_name = "uid://ddyuspb8ifklr"
 quit_button = NodePath("MenuLayer/BottomMargin/Menu/Quit")
 start_button = NodePath("MenuLayer/BottomMargin/Menu/Start")
+credits_button = NodePath("MenuLayer/BottomMargin/Menu/Credits")
+credits_window = NodePath("MenuLayer/CreditsWindow")
 
 [node name="FocusGrabber" type="Node" parent="." node_paths=PackedStringArray("first_to_focus")]
 script = ExtResource("4_wu84c")
@@ -67,3 +70,51 @@ text = "Credits"
 [node name="Quit" type="Button" parent="MenuLayer/BottomMargin/Menu"]
 layout_mode = 2
 text = "Quit"
+
+[node name="CreditsWindow" type="Popup" parent="MenuLayer" node_paths=PackedStringArray("label")]
+title = "Credits"
+initial_position = 2
+size = Vector2i(370, 390)
+borderless = false
+content_scale_mode = 1
+script = ExtResource("5_8ln24")
+label = NodePath("Panel/RichTextLabel")
+
+[node name="Panel" type="Panel" parent="MenuLayer/CreditsWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuLayer/CreditsWindow/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "
+[center][wave amp=50.0 freq=5.0 connected=1]Game Template[/wave][/center]
+
+Brought to you by:
+[ul bullet=‣]
+Yngvarr — code, sound, game design;
+Syudzius — art, game design.
+[/ul]
+
+With use of amazing third-party assets:
+[ul bullet=‣]
+[url=https://plus.excalidraw.com/excalifont]Excalifont[/url] by Excalidraw team;
+[/ul]
+
+And these wonderful tools:
+[ul bullet=‣]
+[url=https://godotengine.org/]Godot Engine[/url] by Godot contributors.
+[url=https://www.bitwig.com/]Bitwig Studio[/url] by Bitwig GmbH.
+[url=https://www.aseprite.org/]Aseprite[/url] by Igara Studio S.A.
+[/ul]
+
+Special thanks to all my homies! 🐺
+"

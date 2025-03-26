@@ -12,6 +12,8 @@ extends Node2D
 @export var start_button: Button
 @export var credits_button: Button
 @export var credits_window: Window
+@export var options_button: Button
+@export var options_window: Window
 
 
 func _ready() -> void:
@@ -20,7 +22,8 @@ func _ready() -> void:
 			quit_button.visible = false
 
 		start_button.pressed.connect(start_game)
-		credits_button.pressed.connect(open_credits)
+		credits_button.pressed.connect(func(): credits_window.show())
+		options_button.pressed.connect(func(): options_window.show())
 		quit_button.pressed.connect(quit_game)
 
 
@@ -35,10 +38,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func start_game() -> void:
 	Global.change_scene(game_scene_name)
-
-
-func open_credits() -> void:
-	credits_window.show()
 
 
 func quit_game() -> void:

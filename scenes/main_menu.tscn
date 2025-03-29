@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://kxbr4sotj34g"]
+[gd_scene load_steps=8 format=3 uid="uid://kxbr4sotj34g"]
 
 [ext_resource type="Script" uid="uid://pbhqcq3e7204" path="res://src/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://caxpo5bu7y28j" path="res://fonts/Excalifont-Regular.woff2" id="2_ekxnf"]
 [ext_resource type="Theme" uid="uid://d3lp3uag5xe6g" path="res://themes/menu_theme.tres" id="3_bqqt6"]
 [ext_resource type="Script" uid="uid://cjyjl78gf56n0" path="res://src/focus_grabber.gd" id="4_wu84c"]
 [ext_resource type="Script" uid="uid://c60boq3cjplxy" path="res://src/credits_window.gd" id="5_8ln24"]
+[ext_resource type="Script" uid="uid://dogsvlts0vq1v" path="res://src/options_window.gd" id="6_rtw2f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
 font = ExtResource("2_ekxnf")
@@ -80,7 +81,7 @@ size = Vector2i(370, 390)
 borderless = false
 content_scale_mode = 1
 script = ExtResource("5_8ln24")
-label = NodePath("Panel/RichTextLabel")
+label = NodePath("Panel/MarginContainer/RichTextLabel")
 
 [node name="Panel" type="Panel" parent="MenuLayer/CreditsWindow"]
 anchors_preset = 15
@@ -89,13 +90,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MenuLayer/CreditsWindow/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/CreditsWindow/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuLayer/CreditsWindow/Panel/MarginContainer"]
+layout_mode = 2
 bbcode_enabled = true
 text = "
 [center][wave amp=50.0 freq=5.0 connected=1]Game Template[/wave][/center]
@@ -121,12 +128,16 @@ And these wonderful tools:
 Special thanks to all my homies! 🐺
 "
 
-[node name="OptionsWindow" type="Popup" parent="MenuLayer"]
+[node name="OptionsWindow" type="Popup" parent="MenuLayer" node_paths=PackedStringArray("first_to_focus", "fullscreen_toggle", "back_button")]
 title = "Options"
 initial_position = 2
-size = Vector2i(395, 455)
+size = Vector2i(395, 170)
 visible = true
 borderless = false
+script = ExtResource("6_rtw2f")
+first_to_focus = NodePath("MarginContainer/VBoxContainer/OptionsGrid/MasterSlider")
+fullscreen_toggle = NodePath("MarginContainer/VBoxContainer/OptionsGrid/CheckButton")
+back_button = NodePath("MarginContainer/VBoxContainer/BackButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/OptionsWindow"]
 anchors_preset = 15
@@ -142,33 +153,33 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/OptionsWindow/MarginContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer"]
+[node name="OptionsGrid" type="GridContainer" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="MasterVolume" type="Label" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MasterVolume" type="Label" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/OptionsGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master volume"
 
-[node name="MasterSlider" type="HSlider" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MasterSlider" type="HSlider" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/OptionsGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EffectsVolume" type="Label" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/GridContainer"]
+[node name="EffectsVolume" type="Label" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/OptionsGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Effects volume"
 
-[node name="EffectsSlider" type="HSlider" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/GridContainer"]
+[node name="EffectsSlider" type="HSlider" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/OptionsGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label" type="Label" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/OptionsGrid"]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="CheckButton" type="CheckButton" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/GridContainer"]
+[node name="CheckButton" type="CheckButton" parent="MenuLayer/OptionsWindow/MarginContainer/VBoxContainer/OptionsGrid"]
 layout_mode = 2
 size_flags_horizontal = 2
 

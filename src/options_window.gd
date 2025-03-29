@@ -1,6 +1,5 @@
 extends Popup
 
-
 @export_group("Internal")
 @export var first_to_focus: Control
 @export var fullscreen_toggle: CheckButton

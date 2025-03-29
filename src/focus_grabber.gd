@@ -2,26 +2,24 @@
 class_name FocusGrabber
 extends Node
 
-
 ## Sets focus to the given node on ready.
 
-
 @export var first_to_focus: Control:
-    set(value):
-        first_to_focus = value
-        update_configuration_warnings()
+	set(value):
+		first_to_focus = value
+		update_configuration_warnings()
 
 
 func _ready() -> void:
-    if not Engine.is_editor_hint():
-        if first_to_focus:
-            first_to_focus.grab_focus()
+	if not Engine.is_editor_hint():
+		if first_to_focus:
+			first_to_focus.grab_focus()
 
 
 func _get_configuration_warnings() -> PackedStringArray:
-    var warns: PackedStringArray = []
+	var warns: PackedStringArray = []
 
-    if first_to_focus == null:
-        warns.push_back("First to Focus must not be empty.")
+	if first_to_focus == null:
+		warns.push_back("First to Focus must not be empty.")
 
-    return warns
+	return warns

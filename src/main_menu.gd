@@ -17,6 +17,8 @@ extends Node2D
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
+		Options.load_from_file()
+
 		if OS.has_feature("web"):
 			quit_button.visible = false
 

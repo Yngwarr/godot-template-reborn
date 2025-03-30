@@ -1,3 +1,68 @@
-[gd_scene format=3 uid="uid://ddyuspb8ifklr"]
+[gd_scene load_steps=8 format=3 uid="uid://ddyuspb8ifklr"]
 
-[node name="Game" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bdule1thbksul" path="res://icon.svg" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bs4fog8nbeoow" path="res://src/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bg8uenf4e1fyi" path="res://scenes/pause_menu.tscn" id="2_lbhrr"]
+[ext_resource type="Script" uid="uid://coarsnmnsg8sv" path="res://src/pause.gd" id="2_lnu2h"]
+
+[sub_resource type="Animation" id="Animation_yqjtg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(100, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_uwrxv"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(100, 100), Vector2(582, 557), Vector2(1074, 353), Vector2(587, 73), Vector2(103, 332), Vector2(1063, 559), Vector2(100, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lnu2h"]
+_data = {
+&"RESET": SubResource("Animation_yqjtg"),
+&"idle": SubResource("Animation_uwrxv")
+}
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("pause_ctl", "pause_menu")]
+script = ExtResource("1_yqjtg")
+pause_ctl = NodePath("Pause")
+pause_menu = NodePath("PauseMenu")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_lbhrr")]
+visible = false
+
+[node name="Pause" type="Node" parent="." node_paths=PackedStringArray("pause_screen")]
+process_mode = 3
+script = ExtResource("2_lnu2h")
+pause_screen = NodePath("../PauseMenu")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(100, 100)
+texture = ExtResource("1_uwrxv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Icon")
+libraries = {
+&"": SubResource("AnimationLibrary_lnu2h")
+}

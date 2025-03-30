@@ -22,5 +22,5 @@ func _input(event: InputEvent) -> void:
 ## restart button on the game over screen). Hence, file name.
 func change_scene(scene_file_name: String) -> void:
 	# we expect a new scene to be unpaused
-	get_tree().paused = true
+	get_tree().paused = false
 	get_tree().change_scene_to_file(scene_file_name)

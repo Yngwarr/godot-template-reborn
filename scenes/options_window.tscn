@@ -9,6 +9,7 @@ initial_position = 2
 size = Vector2i(395, 200)
 visible = true
 borderless = false
+content_scale_mode = 1
 script = ExtResource("1_gqmgd")
 first_to_focus = NodePath("MarginContainer/VBoxContainer/OptionsGrid/MasterSlider")
 fullscreen_toggle = NodePath("MarginContainer/VBoxContainer/OptionsGrid/FullscreenToggle")

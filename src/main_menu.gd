@@ -34,6 +34,9 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if ProjectSettings.get_setting("application/config/name") == "Game Template":
 		warns.push_back("Please, change the game's name.")
 
+	if not game_scene_name:
+		warns.push_back("game_scene_name can't be empty.")
+
 	return warns
 
 

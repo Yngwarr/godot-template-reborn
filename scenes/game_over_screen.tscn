@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://e11wmy733k34"]
+
+[ext_resource type="Script" uid="uid://br42qlhvlowal" path="res://src/game_over_screen.gd" id="1_wa2qn"]
+[ext_resource type="FontFile" uid="uid://caxpo5bu7y28j" path="res://fonts/Excalifont-Regular.woff2" id="2_cyfkl"]
+[ext_resource type="Theme" uid="uid://d3lp3uag5xe6g" path="res://themes/menu_theme.tres" id="3_xx0b3"]
+[ext_resource type="PackedScene" uid="uid://diu34tti5u6og" path="res://scenes/options_window.tscn" id="4_5i0af"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
+font = ExtResource("2_cyfkl")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
+font = ExtResource("2_cyfkl")
+font_size = 24
+
+[node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("retry_button", "quit_button")]
+visible = false
+script = ExtResource("1_wa2qn")
+back_scene_name = "uid://kxbr4sotj34g"
+retry_button = NodePath("BottomMargin/Menu/Retry")
+quit_button = NodePath("BottomMargin/Menu/Quit")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="TopMargin" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 191.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="TopMargin/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_gee14")
+horizontal_alignment = 1
+
+[node name="FlavorText" type="Label" parent="TopMargin/VBoxContainer"]
+layout_mode = 2
+text = "You won!.. or lost... sorry, I were multitasking, what was the question?"
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 1
+
+[node name="BottomMargin" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -255.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 100
+
+[node name="Menu" type="VBoxContainer" parent="BottomMargin"]
+layout_mode = 2
+theme = ExtResource("3_xx0b3")
+
+[node name="Retry" type="Button" parent="BottomMargin/Menu"]
+layout_mode = 2
+text = "Play again"
+
+[node name="Quit" type="Button" parent="BottomMargin/Menu"]
+layout_mode = 2
+text = "Quit to menu"
+
+[node name="OptionsWindow" parent="." instance=ExtResource("4_5i0af")]
+visible = false
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+auto_translate_mode = 1
+title = ""
+initial_position = 2
+size = Vector2i(289, 100)
+content_scale_mode = 1
+ok_button_text = "Yes"
+dialog_text = "Do you want to quit to main menu?"
+cancel_button_text = "No"

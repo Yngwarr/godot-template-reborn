@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddyuspb8ifklr"]
+[gd_scene load_steps=9 format=3 uid="uid://ddyuspb8ifklr"]
 
 [ext_resource type="Texture2D" uid="uid://bdule1thbksul" path="res://icon.svg" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bs4fog8nbeoow" path="res://src/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bg8uenf4e1fyi" path="res://scenes/pause_menu.tscn" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://coarsnmnsg8sv" path="res://src/pause.gd" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://e11wmy733k34" path="res://scenes/game_over_screen.tscn" id="3_iywne"]
 
 [sub_resource type="Animation" id="Animation_yqjtg"]
 length = 0.001
@@ -51,6 +52,8 @@ pause_menu = NodePath("PauseMenu")
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_lbhrr")]
 visible = false
+
+[node name="GameOverScreen" parent="." instance=ExtResource("3_iywne")]
 
 [node name="Pause" type="Node" parent="." node_paths=PackedStringArray("pause_screen")]
 process_mode = 3

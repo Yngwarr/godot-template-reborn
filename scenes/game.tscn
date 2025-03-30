@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddyuspb8ifklr"]
+[gd_scene load_steps=11 format=3 uid="uid://ddyuspb8ifklr"]
 
 [ext_resource type="Texture2D" uid="uid://bdule1thbksul" path="res://icon.svg" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bs4fog8nbeoow" path="res://src/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bg8uenf4e1fyi" path="res://scenes/pause_menu.tscn" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://coarsnmnsg8sv" path="res://src/pause.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://e11wmy733k34" path="res://scenes/game_over_screen.tscn" id="3_iywne"]
+[ext_resource type="AudioStream" uid="uid://c7efxv16jqf0b" path="res://sounds/bass.wav" id="6_u5sy4"]
+[ext_resource type="AudioStream" uid="uid://80xpybfhgsgn" path="res://sounds/drum.wav" id="7_gee14"]
 
 [sub_resource type="Animation" id="Animation_yqjtg"]
 length = 0.001
@@ -69,3 +71,13 @@ root_node = NodePath("../Icon")
 libraries = {
 &"": SubResource("AnimationLibrary_lnu2h")
 }
+
+[node name="Bass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_u5sy4")
+autoplay = true
+bus = &"Music"
+
+[node name="Drums" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gee14")
+autoplay = true
+bus = &"SFX"

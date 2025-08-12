@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://diu34tti5u6og"]
 
-[ext_resource type="Script" uid="uid://dogsvlts0vq1v" path="res://src/options_window.gd" id="1_gqmgd"]
+[ext_resource type="Script" uid="uid://dogsvlts0vq1v" path="res://src/template/options_window.gd" id="1_gqmgd"]
 
 [node name="OptionsWindow" type="Popup" node_paths=PackedStringArray("first_to_focus", "fullscreen_toggle", "master_slider", "sfx_slider", "music_slider", "back_button")]
 auto_translate_mode = 1

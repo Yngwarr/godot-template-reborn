@@ -16,6 +16,9 @@ extends Node2D
 
 
 func _ready() -> void:
+	if OS.has_feature(&"editor_runtime"):
+		print("User data is located at %s" % OS.get_data_dir())
+
 	if not Engine.is_editor_hint():
 		Options.load_from_file()
 

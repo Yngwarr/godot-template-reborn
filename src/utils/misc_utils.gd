@@ -24,3 +24,9 @@ static func random_pitch(base: float, offset := .1) -> float:
 	assert(offset <= base)
 
 	return eerp(base - offset, base + offset, randf())
+
+
+static func reset_play(anim: AnimationPlayer, anim_name: StringName) -> void:
+	anim.play(&"RESET")
+	anim.advance(0)
+	anim.play(anim_name)

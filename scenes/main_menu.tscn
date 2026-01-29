@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://kxbr4sotj34g"]
+[gd_scene format=3 uid="uid://kxbr4sotj34g"]
 
 [ext_resource type="Script" uid="uid://pbhqcq3e7204" path="res://src/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://caxpo5bu7y28j" path="res://fonts/Excalifont-Regular.woff2" id="2_ekxnf"]
@@ -11,7 +11,7 @@
 font = ExtResource("2_ekxnf")
 font_size = 72
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("quit_button", "start_button", "credits_button", "credits_window", "options_button", "options_window")]
+[node name="MainMenu" type="Node2D" unique_id=1401117816 node_paths=PackedStringArray("quit_button", "start_button", "credits_button", "credits_window", "options_button", "options_window")]
 script = ExtResource("1_l6cm7")
 game_scene_name = "uid://ddyuspb8ifklr"
 quit_button = NodePath("MenuLayer/BottomMargin/Menu/Quit")
@@ -21,27 +21,27 @@ credits_window = NodePath("MenuLayer/CreditsWindow")
 options_button = NodePath("MenuLayer/BottomMargin/Menu/Options")
 options_window = NodePath("MenuLayer/OptionsWindow")
 
-[node name="FocusGrabber" type="Node" parent="." node_paths=PackedStringArray("first_to_focus")]
+[node name="FocusGrabber" type="Node" parent="." unique_id=1184262768 node_paths=PackedStringArray("first_to_focus")]
 script = ExtResource("4_wu84c")
 first_to_focus = NodePath("../MenuLayer/BottomMargin/Menu/Start")
 metadata/_custom_type_script = "uid://cjyjl78gf56n0"
 
-[node name="MenuLayer" type="CanvasLayer" parent="."]
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1459405510]
 
-[node name="TopMargin" type="MarginContainer" parent="MenuLayer"]
+[node name="TopMargin" type="MarginContainer" parent="MenuLayer" unique_id=1070624242]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 191.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 100
 
-[node name="Title" type="Label" parent="MenuLayer/TopMargin"]
+[node name="Title" type="Label" parent="MenuLayer/TopMargin" unique_id=2478083]
 layout_mode = 2
 text = "Game Template"
 label_settings = SubResource("LabelSettings_bqqt6")
 horizontal_alignment = 1
 
-[node name="BottomMargin" type="MarginContainer" parent="MenuLayer"]
+[node name="BottomMargin" type="MarginContainer" parent="MenuLayer" unique_id=1054085349]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -54,27 +54,27 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 400
 theme_override_constants/margin_bottom = 100
 
-[node name="Menu" type="VBoxContainer" parent="MenuLayer/BottomMargin"]
+[node name="Menu" type="VBoxContainer" parent="MenuLayer/BottomMargin" unique_id=2008192513]
 layout_mode = 2
 theme = ExtResource("3_bqqt6")
 
-[node name="Start" type="Button" parent="MenuLayer/BottomMargin/Menu"]
+[node name="Start" type="Button" parent="MenuLayer/BottomMargin/Menu" unique_id=1136151487]
 layout_mode = 2
 text = "Start"
 
-[node name="Options" type="Button" parent="MenuLayer/BottomMargin/Menu"]
+[node name="Options" type="Button" parent="MenuLayer/BottomMargin/Menu" unique_id=1184549258]
 layout_mode = 2
 text = "Options"
 
-[node name="Credits" type="Button" parent="MenuLayer/BottomMargin/Menu"]
+[node name="Credits" type="Button" parent="MenuLayer/BottomMargin/Menu" unique_id=12618527]
 layout_mode = 2
 text = "Credits"
 
-[node name="Quit" type="Button" parent="MenuLayer/BottomMargin/Menu"]
+[node name="Quit" type="Button" parent="MenuLayer/BottomMargin/Menu" unique_id=776929963]
 layout_mode = 2
 text = "Quit"
 
-[node name="CreditsWindow" type="Popup" parent="MenuLayer" node_paths=PackedStringArray("label")]
+[node name="CreditsWindow" type="Popup" parent="MenuLayer" unique_id=1850983011 node_paths=PackedStringArray("label")]
 title = "Credits"
 initial_position = 2
 size = Vector2i(370, 390)
@@ -83,14 +83,14 @@ content_scale_mode = 1
 script = ExtResource("5_8ln24")
 label = NodePath("Panel/MarginContainer/RichTextLabel")
 
-[node name="Panel" type="Panel" parent="MenuLayer/CreditsWindow"]
+[node name="Panel" type="Panel" parent="MenuLayer/CreditsWindow" unique_id=1288859640]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/CreditsWindow/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/CreditsWindow/Panel" unique_id=1040427373]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,7 +101,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MenuLayer/CreditsWindow/Panel/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuLayer/CreditsWindow/Panel/MarginContainer" unique_id=1247825526]
 layout_mode = 2
 bbcode_enabled = true
 text = "
@@ -128,5 +128,5 @@ And these wonderful tools:
 Special thanks to all my homies! 🐺
 "
 
-[node name="OptionsWindow" parent="MenuLayer" instance=ExtResource("6_rtw2f")]
+[node name="OptionsWindow" parent="MenuLayer" unique_id=1352107923 instance=ExtResource("6_rtw2f")]
 visible = false
